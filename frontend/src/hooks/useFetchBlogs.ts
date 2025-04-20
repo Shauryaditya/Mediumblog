@@ -5,7 +5,7 @@ import { BACKEND_URL } from "../config";
 
 
 const useFetchBlogs = () => {
-    const [posts, setPosts] = useState<Post>([]);
+    const [posts, setPosts] = useState<Post[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -41,7 +41,9 @@ export default useFetchBlogs;
 
 interface Post {
     id: string;
-    authorName: string;
+    author: {
+        name: string;
+      };
     title: string;
     content: string;
     publishedDate: string;
