@@ -1,5 +1,3 @@
-import React from "react";
-
 const BlogSkeleton = () => {
   return (
     <div role="status" className="w-full animate-pulse">
