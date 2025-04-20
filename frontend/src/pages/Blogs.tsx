@@ -19,11 +19,19 @@ export const Blogs = () => {
   const { posts, loading, error } = useFetchBlogs<Post[]>();
 
   if (loading) {
-    return <div className="flex flex-col justify-center">
-      <BlogSkeleton />
-      <BlogSkeleton />
-      <BlogSkeleton />
-    </div>;
+    return (
+      <div className="">
+        <Appbar />
+        <div className="flex justify-center">
+          <div className="">
+            <BlogSkeleton />
+            <BlogSkeleton />
+            <BlogSkeleton />
+          </div>
+        </div>
+        ;
+      </div>
+    );
   }
 
   return (
