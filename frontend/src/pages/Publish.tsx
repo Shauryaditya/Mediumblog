@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 export const Publish = () => {
   const [title, setTitle] = useState("");
   const [value, setValue] = useState("");
+  const [mainImageUrl, setMainImageUrl] = useState("");
   const navigate = useNavigate();
   const reactQuillRef = useRef<ReactQuill>(null);
   const handlePublish = async () => {
@@ -19,6 +20,7 @@ export const Publish = () => {
       {
         title,
         content: value,
+        mainImageUrl, // added field
       },
       {
         headers: {
@@ -28,11 +30,27 @@ export const Publish = () => {
     );
     navigate(`/blog/${response.data.id}`);
   };
+  
   return (
     <div className="">
       <Appbar />
       <div className="p-8">
         <div className="mb-5">
+          <div className="mb-5">
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Cover Image URL
+            </label>
+            <input
+              type="text"
+              onChange={(e) => setMainImageUrl(e.target.value)}
+              value={mainImageUrl}
+              id="imageUrl"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="https://example.com/your-image.jpg"
+              required
+            />
+          </div>
+
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Your Title
           </label>
